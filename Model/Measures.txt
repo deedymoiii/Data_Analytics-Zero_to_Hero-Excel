@@ -1,0 +1,162 @@
+-- Export Total Trade Value (in USD)
+TotalTradeValueUSD_Export
+	:= CALCULATE(SUM(Fact_Trade[TradeValueUSD]), Fact_Trade[TradeFlow] = "Export")
+
+-- Import Total Trade Value (in USD)
+TotalTradeValueUSD_Import
+	:= CALCULATE(SUM(Fact_Trade[TradeValueUSD]), Fact_Trade[TradeFlow] = "Import")
+
+-- Trade Balance
+TradeBalance
+	:= CALCULATE([TotalTradeValueUSD_Export] - [TotalTradeValueUSD_Import])
+
+-- Export Year-over-Year %
+Export YoY % := 
+IF(
+	HASONEVALUE(Dim_Date[Year]),
+	VAR CurrentYear = MAX(Dim_Date[Year])
+	VAR Previous = CurrentYear - 1
+	VAR PreviousYearExports = CALCULATE([TotalTradeValueUSD_Export], ALL(Dim_Date), Dim_Date[Year] = Previous)
+
+	RETURN
+	DIVIDE([TotalTradeValueUSD_Export] - PreviousYearExports, PreviousYearExports)
+)
+
+-- Import Year-over-Year %
+Import YoY % := 
+IF(
+	HASONEVALUE(Dim_Date[Year]),
+	VAR CurrentYear = MAX(Dim_Date[Year])
+	VAR Previous = CurrentYear - 1
+	VAR PreviousYearImports = CALCULATE([TotalTradeValueUSD_Import], ALL(Dim_Date), Dim_Date[Year] = Previous)
+
+	RETURN
+	DIVIDE([TotalTradeValueUSD_Import] - PreviousYearImports, PreviousYearImports)
+)
+
+-- Trade Balance Year-over-Year %
+Trade Balance YoY % := 
+IF(
+	HASONEVALUE(Dim_Date[Year]),
+	VAR CurrentYear = MAX(Dim_Date[Year])
+	VAR Previous = CurrentYear - 1
+	VAR PreviousYearTradeBalance = CALCULATE([TradeBalance], ALL(Dim_Date), Dim_Date[Year] = Previous)
+
+	RETURN
+	DIVIDE([TradeBalance] - PreviousYearTradeBalance, PreviousYearTradeBalance)
+)
+
+-- Export-to-Import Ratio
+Export-to-Import Ratio % 
+	:= DIVIDE([TotalTradeValueUSD_Export], [TotalTradeValueUSD_Import])
+
+-- By Sector Share
+By Sector Export Share % := 
+DIVIDE(
+		[TotalTradeValueUSD_Export], CALCULATE([TotalTradeValueUSD_Export], ALL(Dim_Product))
+	)
+
+By Sector Import Share % := 
+DIVIDE(
+		[TotalTradeValueUSD_Import], CALCULATE([TotalTradeValueUSD_Import], ALL(Dim_Product))
+	)
+
+-- By Partner Share
+By Partner Export Share % := 
+DIVIDE(
+		[TotalTradeValueUSD_Export], 
+		CALCULATE(
+			[TotalTradeValueUSD_Export], ALL(Dim_Partner)
+		)
+	)
+
+By Partner Import Share % := 
+DIVIDE(
+		[TotalTradeValueUSD_Import], 
+		CALCULATE(
+			[TotalTradeValueUSD_Import], ALL(Dim_Partner)
+		)
+	)
+
+-- Ranking
+Ranking Export Partners := 
+RANKX(
+		ALL(Dim_Partner), [TotalTradeValueUSD_Export],,DESC,Dense
+	)
+
+Ranking Import Partners := 
+RANKX(
+		ALL(Dim_Partner), [TotalTradeValueUSD_Import],,DESC,Dense
+	)
+
+Top 5 Export Share % := 
+	VAR TotalTradeValueUSD_PartnerExport = 
+		CALCULATE(
+			[TotalTradeValueUSD_Export], ALL(Dim_Partner)
+		)
+	
+	VAR Top_5 = 
+		CALCULATE(
+		[TotalTradeValueUSD_Export], 
+		FILTER(
+			ALL(Dim_Partner), 
+			RANKX(
+				ALL(Dim_Partner), [TotalTradeValueUSD_Export]) <= 5)
+		)
+		
+	RETURN
+		DIVIDE(Top_5, TotalTradeValueUSD_PartnerExport)
+
+Top 5 Import Share % := 
+	VAR TotalTradeValueUSD_PartnerImport = 
+		CALCULATE(
+			[TotalTradeValueUSD_Import], ALL(Dim_Partner)
+		)
+	
+	VAR Top_5 = 
+		CALCULATE(
+		[TotalTradeValueUSD_Import], 
+		FILTER(
+			ALL(Dim_Partner), 
+			RANKX(
+				ALL(Dim_Partner), [TotalTradeValueUSD_Import]) <= 5)
+		)
+		
+	RETURN
+		DIVIDE(Top_5, TotalTradeValueUSD_PartnerImport)
+
+Top 1 Export Share % := 
+	VAR TotalTradeValueUSD_PartnerExport = 
+		CALCULATE(
+			[TotalTradeValueUSD_Export], ALL(Dim_Partner)
+		)
+	
+	VAR Top_1 = 
+		CALCULATE(
+		[TotalTradeValueUSD_Export], 
+		FILTER(
+			ALL(Dim_Partner), 
+			RANKX(
+				ALL(Dim_Partner), [TotalTradeValueUSD_Export]) =1)
+		)
+		
+	RETURN
+		DIVIDE(Top_1, TotalTradeValueUSD_PartnerExport)
+
+Top 1 Import Share % := 
+	VAR TotalTradeValueUSD_PartnerImport = 
+		CALCULATE(
+			[TotalTradeValueUSD_Import], ALL(Dim_Partner)
+		)
+	
+	VAR Top_1 = 
+		CALCULATE(
+		[TotalTradeValueUSD_Import], 
+		FILTER(
+			ALL(Dim_Partner), 
+			RANKX(
+				ALL(Dim_Partner), [TotalTradeValueUSD_Import]) = 1)
+		)
+		
+	RETURN
+		DIVIDE(Top_1, TotalTradeValueUSD_PartnerImport)
