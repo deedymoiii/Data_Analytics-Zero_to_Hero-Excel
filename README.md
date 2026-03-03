@@ -1,4 +1,4 @@
-# Philippine Trade Structure and Balance Analysis (2019–2024): A Sector-Level Study Using WITS Data [On going]
+# Philippine Trade Structure and Balance Analysis (2019–2024): A Sector-Level Study Using WITS Data [In Progress]
 
 Hi, I’m **Engr. Ed-Vir Mercado**, a Computer Engineer with a growing focus on Data Analytics.  
 
