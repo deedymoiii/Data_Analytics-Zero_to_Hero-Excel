@@ -67,11 +67,16 @@ Using Power Query, I performed the following transformations:
 - Ensured consistent naming conventions across sector and partner fields
 - Structured the dataset to support dimensional modeling
 
-Detailed cleaning steps are documented in the project screenshots.
+Detailed cleaning steps are documented in the following screenshot.
+
+<img width="398" height="870" alt="Data Cleaning" src="https://github.com/user-attachments/assets/5674f07a-3009-419b-b551-ba0f3f6c8866" />
+
 
 # 🧩 Data Model
 
 A star schema model was implemented using Power Pivot.
+
+<img width="1920" height="1032" alt="Star Schema" src="https://github.com/user-attachments/assets/0eb88d3c-9d67-423f-99ff-67ed1886bde5" />
 
 ## Fact Table
 Fact_Trade
