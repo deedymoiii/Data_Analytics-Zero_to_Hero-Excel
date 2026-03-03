@@ -1,4 +1,4 @@
-# Philippine Trade Structure and Balance Analysis (2019–2024): A Sector-Level Study Using WITS Data
+# Philippine Trade Structure and Balance Analysis (2019–2024): A Sector-Level Study Using WITS Data [On going]
 
 Hi, I’m **Engr. Ed-Vir Mercado**, a Computer Engineer with a growing focus on Data Analytics.  
 
@@ -18,10 +18,10 @@ The data was sourced from the World Integrated Trade Solution (WITS) database of
 This project demonstrates the application of:
 - **Power Query & Power Pivot** – Data cleaning, transformation, and modeling
 - **DAX (Data Analysis Expressions)** – Custom measures and analytical computations
-- **Interactive Dashboards** – Designed to generate insights and support policy recommendations
 
 # 🎯 Objectives
 
 - Examine shifts in trade balance across key sectors
 - Identify structural trade patterns pre-, during-, and post-pandemic
 - Provide data-driven insights that may inform economic or policy discussions
+
