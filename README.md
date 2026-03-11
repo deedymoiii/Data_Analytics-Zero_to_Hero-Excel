@@ -1,5 +1,4 @@
-# Philippine Trade Structure and Balance Analysis (2019–2024): A Sector-Level Study Using WITS Data 
-🚧 In Progress
+# Philippine Trade Structure and Balance Analysis (2019–2024): A Sector-Level Study Using WITS Data
 
 # 👤 About the Author
 
@@ -123,51 +122,91 @@ All measures are documented in a consolidated Measures.txt file within the repos
 
 # 📊 Current Outputs
 
-The workbook currently supports analytical views via Pivot Tables:
+The workbook provides several analytical views of Philippine trade structure using **Power Pivot**, **Pivot Tables**, and **dashboard visualizations**.
 
-By Partner – Exports
+## 01_Executive_Overview
+
+A high-level summary dashboard presenting key indicators of Philippine trade.
+
+Includes:
+- Total exports and imports (USD)
+- Overall trade balance
+- Top export and import partners
+- Year slicer to analyze trends from 2019–2024
+
+## 02_Partner_Structure
+
+Analysis of trade concentration by partner country.
+
+Exports:
 - Total export value (USD)
 - Share of total exports
 - Ranking by export contribution
 
-By Partner – Imports
+Imports:
 - Total import value (USD)
 - Share of total imports
 - Ranking by import contribution
 
-Structural Concentration
-- Top 1 and Top 5 partner contribution to total trade
+Structural concentration metrics:
+- Top 1 partner share
+- Top 5 partner share
 - Trend analysis of partner dependence (2019–2024)
 
-Sector Composition
-- Sector-level share of total trade over time
+## 03_Sector_Composition
 
-Dashboard visualization and KPI summary sheets are currently under development.
+Sector-level breakdown of Philippine trade.
+
+Includes:
+- Sector share of total exports
+- Sector share of total imports
+- Comparative view of sector importance across years
+- Interactive filtering using a Year slicer
+
+This sheet highlights which industries dominate the country’s trade structure.
+
+## 04_Trade_Balance_Analysis
+
+Sector-level trade balance visualization.
+
+Includes:
+- Trade balance by sector (Exports – Imports)
+- Horizontal bar chart separating surplus and deficit sectors
+- Identification of:
+  - Largest surplus sector
+  - Largest deficit sector
+- Analytical summary highlighting structural patterns in the Philippine trade economy
 
 # 🔎 Preliminary Insights
 
 Initial findings indicate:
-- Machinery and Electrical products consistently dominate Philippine trade, suggesting structural dependence on this sector.
-- Export markets show moderate diversification, with Top 5 export share declining from ~66% to ~61%.
-- Import concentration risk increased in 2024, with Top 1 partner share rising to ~25.6%.
-- The United States consistently ranks as the Philippines’ top export destination.
-- China remains the largest source of imports throughout 2019–2024.
+- **Machinery and Electrical products** consistently dominate Philippine exports, indicating strong specialization in electronics and semiconductor-related industries.
+- Export markets show **moderate diversification**, with the Top 5 export partner share declining from approximately **66% to ~61%** between 2019 and 2024.
+- Import concentration risk increased in **2024**, with the Top 1 partner share rising to about **25.6%**.
+- The **United States** consistently ranks as the Philippines’ top export destination.
+- **China** remains the largest source of imports throughout 2019–2024.
+- Sector-level analysis shows large trade deficits in **Mineral Products**, **Transportation Equipment**, and **Chemicals**, reflecting reliance on imported energy, machinery, and industrial inputs.
 
-These patterns suggest improving export diversification but potential import-side vulnerability.
+These patterns suggest **gradual diversification of export markets but persistent structural dependence on imported industrial goods and fuel**.
 
-# 💡 Skills Demonstrated
+# 🛠 Tools & Techniques Used
 
-- Data Cleaning & Transformation (Power Query)
-- Dimensional Data Modeling (Star Schema)
-- DAX & Analytical Measure Development
-- Time-Series & Growth Analysis
-- Concentration & Share Metrics
-- Trade Data Interpretation
-- Structured Pivot Table Reporting
+Data Processing
+- Microsoft Excel Power Pivot for data modeling
+- Fact and dimension table structure (star schema)
 
-# 🚀 Planned Enhancements
+Data Analysis
+- DAX measures for trade value aggregation and share calculations
+- Ranking functions for identifying top trade partners
+- Trade concentration metrics (Top 1 / Top 5 partner shares)
 
-- Executive KPI Dashboard
-- Interactive slicers for sector and partner filtering
-- Policy-period comparison modeling
-- Enhanced data visualization for executive-level reporting
+Data Visualization
+- Pivot Tables for structured analysis
+- Dashboard sheets for analytical summaries
+- Interactive Year slicer for dynamic filtering
+
+Analytical Techniques
+- Trade partner concentration analysis
+- Sector composition analysis
+- Sector-level trade balance analysis (Exports – Imports)
+- Identification of structural trade surpluses and deficits
